@@ -1,0 +1,27 @@
+
+Ex. 
+this main website "www.hdg.com.eg" i need visitors form Kuwait Country open "hdg.com.eg/ar/kuwait" 
+
+STEP 1.
+insert code in .htaccess file (change website and country) 
+
+
+// ccr.php - country code redirect
+require_once('geoplugin.class.php');
+$geoplugin = new geoPlugin();
+$geoplugin->locate();
+$country_code = $geoplugin->countryCode;
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+switch($country_code) {
+case 'KW':
+if (strpos($url,'kuwait') == false) {
+
+//echo($url);
+header("Location: http://hdg.com.eg/ar/kuwait");
+exit;
+}
+
+
+STEP 2.
+
+upload php file in attachment
